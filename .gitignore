@@ -1,0 +1,9 @@
+# Ignore (optional) configuration files with user-specific paths:
+initial_cache.cmake
+setup.cfg
+
+build/*
+install/*
+bfm2017/bfm2017-1_bfm_nomouth.*
+bfm2017/model2017-1_bfm_nomouth.*
+sfm/*
