@@ -1,1 +1,55 @@
 # eos-expression-aware-proxy
+This repo holds the Expression-Aware Proxy Generation part of the paper *Photo-Realistic Facial Details Synthesis From Single Image*, ICCV 2019. It is modified based on [patrikhuber](https://github.com/patrikhuber)'s fantastic work [eos](https://github.com/patrikhuber/eos) and enables extra options:
+
+ - input initial shape/expression coefficients
+ - whether to fix shape/expression coefficients during fitting
+ - output various information (depth buffer, normal buffer, etc.) that may be useful for further processing
+
+Note: This repo is not kept in pace with changes in [eos](https://github.com/patrikhuber/eos).
+
+## Getting Started
+
+### BFM2017
+Download [BFM2017](https://faces.dmi.unibas.ch/bfm/bfm2017.html) and copy `model2017-1_bfm_nomouth.h5` to `bfm2017/`.
+
+Install an older version of `eos-py` by
+```
+pip install --force-reinstall eos-py==0.16.1
+```
+
+Run `share/scripts/convert-bfm2017-to-eos.py` to generate `bfm2017-1_bfm_nomouth.bin` in `bfm2017/`.
+
+### Prerequisites
+
+ - Visual Studio 2017 (>=15.5)
+ - Boost (>=1.50.0)
+ - OpenCV (>=2.4.3)
+ - Ceres (if compiling `fit-model-ceres`)
+
+### Installing
+Please refer to [eos](https://github.com/patrikhuber/eos) for detailed instructions. For Windows users, It is recommended to use [vcpkg](https://github.com/Microsoft/vcpkg/). In such case, edit `D:/repo/vcpkg/scripts/buildsystems/vcpkg.cmake` in `CMakeLists.txt` to appropriate path.
+
+### Usage
+After installing, go to `CMAKE_INSTALL_PREFIX/bin/`  and run (may need to first copy related .dll to this directory)
+```
+./fit-model.exe
+```
+A couple of output files should be generated in `CMAKE_INSTALL_PREFIX/bin/data/` where `image_0010.out.obj` is the face mesh.
+
+To use expression prior as in our paper, save initial expression coefficients to a `.txt` with one line for each coefficient. When running `fit-model`, specify with extra flags
+`--init-expression-coeffs-fp PATH_TO_TXT --fix-expression-coeffs 1`
+
+## Additional Output
+
+
+## Citation
+If using this code in your own work, please cite the following paper along with the publication associated with [eos](https://github.com/patrikhuber/eos).
+```
+@article{chen2019photo,
+  title     = {Photo-Realistic Facial Details Synthesis from Single Image},
+  author    = {Anpei Chen, Zhang Chen, Guli Zhang, Ziheng Zhang, Kenny Mitchell and Jingyi Yu},
+  journal   = {arXiv preprint arXiv:1903.10873},
+  year      = {2019}
+}
+```
+
