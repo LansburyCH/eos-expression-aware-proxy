@@ -27,7 +27,7 @@ Run `share/scripts/convert-bfm2017-to-eos.py` to generate `bfm2017-1_bfm_nomouth
  - Ceres (if compiling `fit-model-ceres`)
 
 ### Installing
-Please refer to [eos](https://github.com/patrikhuber/eos) for detailed instructions. For Windows users, It is recommended to use [vcpkg](https://github.com/Microsoft/vcpkg/). In such case, edit `D:/repo/vcpkg/scripts/buildsystems/vcpkg.cmake` in `CMakeLists.txt` to appropriate path.
+Please refer to [eos](https://github.com/patrikhuber/eos) for detailed instructions. For Windows users, It is recommended to use [vcpkg](https://github.com/Microsoft/vcpkg/) for installing dependencies. In such case, edit `D:/repo/vcpkg/scripts/buildsystems/vcpkg.cmake` in `CMakeLists.txt` to appropriate path.
 
 ### Usage
 After installing, go to `CMAKE_INSTALL_PREFIX/bin/`  and run (may need to first copy related .dll to this directory)
