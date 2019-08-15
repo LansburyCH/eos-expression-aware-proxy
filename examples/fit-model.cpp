@@ -222,12 +222,12 @@ int main(int argc, char* argv[])
 	if (init_expression_coeffs_fp != "")
 		init_expression_coeffs = cz::io::read_coeffs_from_file(init_expression_coeffs_fp);
 
-	// CZ: rescale landmarks
-	for (auto&& lm : landmarks)
-	{
-		lm.coordinates[0] *= landmark_scale;
-		lm.coordinates[1] *= landmark_scale;
-	}
+	// // CZ: rescale landmarks
+	// for (auto&& lm : landmarks)
+	// {
+	// 	lm.coordinates[0] *= landmark_scale;
+	// 	lm.coordinates[1] *= landmark_scale;
+	// }
 
     // Draw the loaded landmarks:
     Mat outimg = image.clone();
@@ -271,8 +271,15 @@ int main(int argc, char* argv[])
     //float yaw_angle = glm::degrees(glm::yaw(rendering_params.get_rotation()));
     //// and similarly for pitch and roll.
 
-	const Eigen::Matrix<float, 3, 4> affine_from_ortho = fitting::get_3x4_affine_camera_matrix(rendering_params, image.cols, image.rows);
+	Eigen::Matrix<float, 3, 4> affine_from_ortho = fitting::get_3x4_affine_camera_matrix(rendering_params, image.cols, image.rows);
 	const auto model_view_matrix = eos::fitting::to_eigen(rendering_params.get_modelview());
+
+	// CZ: rescale affine_from_ortho
+	for (int y = 0; y < 2; ++y) {
+		for (int x = 0; x < 4; ++x) {
+			affine_from_ortho(y, x) *= landmark_scale;
+		}
+	}
 
 	// Extract the texture from the image using given mesh and camera parameters:
 	core::Image4u isomap;
