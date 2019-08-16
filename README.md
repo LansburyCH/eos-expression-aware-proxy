@@ -3,7 +3,7 @@ This repo holds the Expression-Aware Proxy Generation part of the paper *Photo-R
 
  - input initial shape/expression coefficients
  - whether to fix shape/expression coefficients during fitting
- - output various information (depth buffer, normal buffer, etc.) that may be useful for further processing
+ - output various information (depth map, normal map, etc.) that may be useful for further processing
 
 Note: This repo is not kept in pace with changes in [eos](https://github.com/patrikhuber/eos).
 
@@ -40,7 +40,21 @@ To use expression prior as in our paper, save initial expression coefficients to
 `--init-expression-coeffs-fp PATH_TO_TXT --fix-expression-coeffs 1`
 
 ## Additional Output
+For `fit-model`, by specifying `--save-mode all`, it will generate many additional output (saved as .dat files). Below are descriptions for some of them:
 
+ - *.depthbuffer.dat - depth of each pixel
+ - *.coordsbuffer.dat - 3D position of each pixel
+ - *.texcoordsbuffer.dat - texture coordinate of each pixel
+ - *.remap_dst_to_src.dat - image coordinate of each texel
+ - *.affine_camera_matrix_with_z.dat - full transformation and projection matrix
+ - *.model_view_matrix.dat - transformation matrix
+ - *.src_normal.dat - normal of each pixel
+ - *.dst_normal.dat - normal of each texel
+ - *.face_normal.dat - normal of each face
+ - *.src_pixel_face.dat - face id of each pixel
+ - *.dst_pixel_face.dat - face id of each texel
+
+Matlab functions for read/write these .dat files are available in matlab/.
 
 ## Citation
 If using this code in your own work, please cite the following paper along with the publication associated with [eos](https://github.com/patrikhuber/eos).
