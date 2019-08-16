@@ -36,7 +36,8 @@ After installing, go to `CMAKE_INSTALL_PREFIX/bin/`  and run (may need to first 
 ```
 A couple of output files should be generated in `CMAKE_INSTALL_PREFIX/bin/data/` where `image_0010.out.obj` is the face mesh.
 
-To use expression prior as in our paper, save initial expression coefficients to a `.txt` with one line for each coefficient. When running `fit-model`, specify with extra flags
+To use expression prior as in our paper, save initial expression coefficients to a `.txt` with one coefficient per line. When running `fit-model`, specify with extra flags
+
 `--init-expression-coeffs-fp PATH_TO_TXT --fix-expression-coeffs 1`
 
 ## Additional Output
