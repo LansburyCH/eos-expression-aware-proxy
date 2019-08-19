@@ -49,12 +49,6 @@ with h5py.File(bfm2017_file, 'r') as hf:
     texture_uv[:, 1] = 1 - texture_uv[:, 1]
     texture_uv = texture_uv.tolist()
 
-    # print(help(eos.morphablemodel.MorphableModel))
-    # print(type(texture_uv))
-    # print(type(texture_uv[0]))
-    # print(type(texture_uv[0][0]))
-    # print(texture_uv[0])
-
     # Construct and save an eos model from the BFM data:
     model = eos.morphablemodel.MorphableModel(shape_model, expression_model, color_model, texture_coordinates = texture_uv) # uv-coordinates can be added here
     eos.morphablemodel.save_model(model, "../../bfm2017/bfm2017-1_bfm_nomouth.bin")

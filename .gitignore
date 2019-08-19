@@ -6,4 +6,5 @@ build/*
 install/*
 bfm2017/bfm2017-1_bfm_nomouth.*
 bfm2017/model2017-1_bfm_nomouth.*
+bfm2017/texture_uv_*
 sfm/*
