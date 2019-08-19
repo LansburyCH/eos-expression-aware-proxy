@@ -27,14 +27,16 @@ Run `share/scripts/convert-bfm2017-to-eos.py` to generate `bfm2017-1_bfm_nomouth
  - Ceres (if compiling `fit-model-ceres`)
 
 ### Installing
-Please refer to [eos](https://github.com/patrikhuber/eos) for detailed instructions. For Windows users, It is recommended to use [vcpkg](https://github.com/Microsoft/vcpkg/) for installing dependencies. In such case, edit `D:/repo/vcpkg/scripts/buildsystems/vcpkg.cmake` in `CMakeLists.txt` to appropriate path.
+Please refer to [eos](https://github.com/patrikhuber/eos) for detailed instructions. For Windows users, It is recommended to use [vcpkg](https://github.com/Microsoft/vcpkg/) to install dependencies. In such case, edit `D:/repo/vcpkg/scripts/buildsystems/vcpkg.cmake` in `CMakeLists.txt` to appropriate path.
 
 ### Usage
-After installing, go to `CMAKE_INSTALL_PREFIX/bin/`  and run (may need to first copy related .dll to this directory)
+To check whether installation is successful, go to `CMAKE_INSTALL_PREFIX/bin/`  and run (may need to first copy related .dll to this directory)
 ```
 ./fit-model.exe
 ```
-A couple of output files should be generated in `CMAKE_INSTALL_PREFIX/bin/data/` where `image_0010.out.obj` is the face mesh.
+A couple of output files should be generated in `CMAKE_INSTALL_PREFIX/bin/data/` where `image_0010.out.obj` is the face mesh. 
+
+To run on specified image, you need to first obtain facial landmarks (Multi-PIE 68 points style) for the image. Then use `-i` to specify path to the image and `-l` the path to the landmark file. Please refer to all available options through `-h`.
 
 To use expression prior as in our paper, save initial expression coefficients to a `.txt` with one coefficient per line. When running `fit-model`, specify with extra flags
 
