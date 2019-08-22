@@ -57,7 +57,7 @@ For `fit-model`, by specifying `--save-mode all`, it will generate many addition
  - *.src_pixel_face.dat - face id of each pixel
  - *.dst_pixel_face.dat - face id of each texel
 
-Matlab functions for read/write these .dat files are available in matlab/.
+Matlab functions for read/write these .dat files are available in matlab/. The nan value is set as a very large number, which can be removed by `xxx(xxx == max(xxx(:))) = nan`.
 
 ## Citation
 If using this code in your own work, please cite the following paper along with the publication associated with [eos](https://github.com/patrikhuber/eos).
